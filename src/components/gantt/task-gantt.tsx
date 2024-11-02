@@ -71,7 +71,7 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
           fontFamily={barProps.fontFamily}
           ref={ganttSVGRef}
         >
-          <Grid {...gridProps} theme={theme} />
+          <Grid {...gridProps} />
           <TaskGanttContent
             {...newBarProps}
             customBarLabelClass={customBarLabelClass}
