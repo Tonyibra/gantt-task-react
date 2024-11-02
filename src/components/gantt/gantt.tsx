@@ -408,6 +408,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     fontFamily,
     fontSize,
     rtl,
+    theme,
   };
   const barProps: TaskGanttContentProps = {
     tasks: barTasks,
