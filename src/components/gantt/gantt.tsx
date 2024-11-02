@@ -472,7 +472,6 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
           scrollY={scrollY}
           scrollX={scrollX}
           customBarLabelClass={customBarLabelClass}
-          theme={theme}
         />
         {ganttEvent.changedTask && (
           <Tooltip

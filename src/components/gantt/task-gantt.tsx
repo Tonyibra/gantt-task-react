@@ -12,7 +12,7 @@ export type TaskGanttProps = {
   scrollY: number;
   scrollX: number;
   customBarLabelClass?: string;
-  theme: "dark" | "light";
+  theme?: "dark" | "light";
 };
 export const TaskGantt: React.FC<TaskGanttProps> = ({
   theme,
