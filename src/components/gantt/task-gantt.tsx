@@ -29,6 +29,8 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
   const verticalGanttContainerRef = useRef<HTMLDivElement>(null);
   const newBarProps = { ...barProps, svg: ganttSVGRef };
 
+  console.warn("theme3", theme);
+
   useEffect(() => {
     if (horizontalContainerRef.current) {
       horizontalContainerRef.current.scrollTop = scrollY;
@@ -53,7 +55,7 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
         height={calendarProps.headerHeight}
         fontFamily={barProps.fontFamily}
       >
-        <Calendar {...calendarProps} theme={theme} />
+        <Calendar {...calendarProps} />
       </svg>
       <div
         ref={horizontalContainerRef}
@@ -75,7 +77,6 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
           <TaskGanttContent
             {...newBarProps}
             customBarLabelClass={customBarLabelClass}
-            theme={theme}
           />
         </svg>
       </div>
