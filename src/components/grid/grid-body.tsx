@@ -27,8 +27,6 @@ export const GridBody: React.FC<GridBodyProps> = ({
   gridRowStyle,
   theme,
 }) => {
-  console.warn("theme", theme);
-
   let y = 0;
   const gridRows: ReactChild[] = [];
   const rowLines: ReactChild[] = [
