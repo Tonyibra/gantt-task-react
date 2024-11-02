@@ -27,6 +27,8 @@ export const GridBody: React.FC<GridBodyProps> = ({
   gridRowStyle,
   theme,
 }) => {
+  console.warn("theme", theme);
+
   let y = 0;
   const gridRows: ReactChild[] = [];
   const rowLines: ReactChild[] = [
@@ -48,7 +50,6 @@ export const GridBody: React.FC<GridBodyProps> = ({
         width={svgWidth}
         height={rowHeight}
         className={`${styles.gridRow} ${gridRowStyle || ""}`}
-        fill={theme === "dark" ? "#233B7C" : "#F7F6F6"}
       />
     );
     rowLines.push(
