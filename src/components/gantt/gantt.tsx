@@ -65,6 +65,8 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   onDelete,
   onSelect,
   onExpanderClick,
+  customBarLabelClass,
+  theme = "light",
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const taskListRef = useRef<HTMLDivElement>(null);
@@ -395,6 +397,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     dates: dateSetup.dates,
     todayColor,
     rtl,
+    theme,
   };
   const calendarProps: CalendarProps = {
     dateSetup,
@@ -429,6 +432,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     onDoubleClick,
     onClick,
     onDelete,
+    theme,
   };
 
   const tableProps: TaskListProps = {
@@ -448,6 +452,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     onExpanderClick: handleExpanderClick,
     TaskListHeader,
     TaskListTable,
+    theme,
   };
   return (
     <div>
@@ -457,7 +462,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
         tabIndex={0}
         ref={wrapperRef}
       >
-        {listCellWidth && <TaskList {...tableProps} />}
+        {listCellWidth && <TaskList {...tableProps} theme={theme} />}
         <TaskGantt
           gridProps={gridProps}
           calendarProps={calendarProps}
@@ -465,6 +470,8 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
           ganttHeight={ganttHeight}
           scrollY={scrollY}
           scrollX={scrollX}
+          customBarLabelClass={customBarLabelClass}
+          theme={theme}
         />
         {ganttEvent.changedTask && (
           <Tooltip

@@ -26,7 +26,9 @@ export type TaskGanttContentProps = {
   arrowIndent: number;
   fontSize: string;
   fontFamily: string;
+  customBarLabelClass?: string;
   rtl: boolean;
+  theme: "dark" | "light";
   setGanttEvent: (value: GanttEvent) => void;
   setFailedTask: (value: BarTask | null) => void;
   setSelectedTask: (taskId: string) => void;
@@ -55,6 +57,8 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
   onDoubleClick,
   onClick,
   onDelete,
+  customBarLabelClass,
+  theme,
 }) => {
   const point = svg?.current?.createSVGPoint();
   const [xStep, setXStep] = useState(0);
@@ -293,6 +297,8 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
               key={task.id}
               isSelected={!!selectedTask && task.id === selectedTask.id}
               rtl={rtl}
+              customBarLabelClass={customBarLabelClass}
+              theme={theme}
             />
           );
         })}

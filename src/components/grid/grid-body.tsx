@@ -3,7 +3,7 @@ import { Task } from "../../types/public-types";
 import { addToDate } from "../../helpers/date-helper";
 import styles from "./grid.module.css";
 
-export type GridBodyProps = {
+export interface GridBodyProps {
   tasks: Task[];
   dates: Date[];
   svgWidth: number;
@@ -11,7 +11,11 @@ export type GridBodyProps = {
   columnWidth: number;
   todayColor: string;
   rtl: boolean;
-};
+  gridRowStyle?: string;
+  gridRowClass?: string;
+  theme: "dark" | "light";
+}
+
 export const GridBody: React.FC<GridBodyProps> = ({
   tasks,
   dates,
@@ -20,7 +24,11 @@ export const GridBody: React.FC<GridBodyProps> = ({
   columnWidth,
   todayColor,
   rtl,
+  gridRowStyle,
+  theme,
 }) => {
+  console.warn("theme", theme);
+
   let y = 0;
   const gridRows: ReactChild[] = [];
   const rowLines: ReactChild[] = [
@@ -41,7 +49,8 @@ export const GridBody: React.FC<GridBodyProps> = ({
         y={y}
         width={svgWidth}
         height={rowHeight}
-        className={styles.gridRow}
+        className={`${styles.gridRow} ${gridRowStyle || ""}`}
+        fill={theme === "dark" ? "#233B7C" : "#F7F6F6"}
       />
     );
     rowLines.push(

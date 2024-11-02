@@ -87,9 +87,11 @@ const App = () => {
         onExpanderClick={handleExpanderClick}
         listCellWidth={isChecked ? "155px" : ""}
         columnWidth={columnWidth}
+        theme="dark"
       />
       <h3>Gantt With Limited Height</h3>
       <Gantt
+        theme="dark"
         tasks={tasks}
         viewMode={view}
         onDateChange={handleTaskChange}
@@ -102,6 +104,8 @@ const App = () => {
         listCellWidth={isChecked ? "155px" : ""}
         ganttHeight={300}
         columnWidth={columnWidth}
+        gridRowStyle="testing"
+        customBarLabelClass="testing"
       />
     </div>
   );

@@ -11,14 +11,18 @@ export type TaskGanttProps = {
   ganttHeight: number;
   scrollY: number;
   scrollX: number;
+  customBarLabelClass?: string;
+  theme: "dark" | "light";
 };
 export const TaskGantt: React.FC<TaskGanttProps> = ({
+  theme,
   gridProps,
   calendarProps,
   barProps,
   ganttHeight,
   scrollY,
   scrollX,
+  customBarLabelClass,
 }) => {
   const ganttSVGRef = useRef<SVGSVGElement>(null);
   const horizontalContainerRef = useRef<HTMLDivElement>(null);
@@ -49,7 +53,7 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
         height={calendarProps.headerHeight}
         fontFamily={barProps.fontFamily}
       >
-        <Calendar {...calendarProps} />
+        <Calendar {...calendarProps} theme={theme} />
       </svg>
       <div
         ref={horizontalContainerRef}
@@ -67,8 +71,12 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
           fontFamily={barProps.fontFamily}
           ref={ganttSVGRef}
         >
-          <Grid {...gridProps} />
-          <TaskGanttContent {...newBarProps} />
+          <Grid {...gridProps} theme={theme} />
+          <TaskGanttContent
+            {...newBarProps}
+            customBarLabelClass={customBarLabelClass}
+            theme={theme}
+          />
         </svg>
       </div>
     </div>

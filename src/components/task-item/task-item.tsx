@@ -21,6 +21,8 @@ export type TaskItemProps = {
     selectedTask: BarTask,
     event?: React.MouseEvent | React.KeyboardEvent
   ) => any;
+  customBarLabelClass?: string;
+  theme: "dark" | "light";
 };
 
 export const TaskItem: React.FC<TaskItemProps> = props => {
@@ -32,6 +34,7 @@ export const TaskItem: React.FC<TaskItemProps> = props => {
     isSelected,
     rtl,
     onEventStart,
+    theme,
   } = {
     ...props,
   };
@@ -106,16 +109,13 @@ export const TaskItem: React.FC<TaskItemProps> = props => {
       onFocus={() => {
         onEventStart("select", task);
       }}
+      fill={theme === "dark" ? "#233B7C" : "#F7F6F6"}
     >
       {taskItem}
       <text
         x={getX()}
         y={task.y + taskHeight * 0.5}
-        className={
-          isTextInside
-            ? style.barLabel
-            : style.barLabel && style.barLabelOutside
-        }
+        className={isTextInside ? style.barLabel : style.barLabelOutside}
         ref={textRef}
       >
         {task.name}

@@ -8,6 +8,7 @@ describe("gantt", () => {
     const root = createRoot(div);
     root.render(
       <Gantt
+        theme="light"
         tasks={[
           {
             start: new Date(2020, 0, 1),

@@ -31,7 +31,9 @@ export const TaskListTableDefault: React.FC<{
   selectedTaskId: string;
   setSelectedTask: (taskId: string) => void;
   onExpanderClick: (task: Task) => void;
+  theme: "dark" | "light";
 }> = ({
+  theme,
   rowHeight,
   rowWidth,
   tasks,
@@ -64,7 +66,11 @@ export const TaskListTableDefault: React.FC<{
         return (
           <div
             className={styles.taskListTableRow}
-            style={{ height: rowHeight }}
+            style={{
+              height: rowHeight,
+              backgroundColor: theme === "dark" ? "#233B7C" : "#F7F6F6",
+              color: theme === "dark" ? "#fff" : "#000",
+            }}
             key={`${t.id}row`}
           >
             <div

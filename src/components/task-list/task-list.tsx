@@ -22,7 +22,9 @@ export type TaskListProps = {
     rowWidth: string;
     fontFamily: string;
     fontSize: string;
+    theme: "dark" | "light";
   }>;
+  theme: "dark" | "light";
   TaskListTable: React.FC<{
     rowHeight: number;
     rowWidth: string;
@@ -53,6 +55,7 @@ export const TaskList: React.FC<TaskListProps> = ({
   horizontalContainerClass,
   TaskListHeader,
   TaskListTable,
+  theme,
 }) => {
   const horizontalContainerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -78,11 +81,12 @@ export const TaskList: React.FC<TaskListProps> = ({
     selectedTaskId: selectedTaskId,
     setSelectedTask,
     onExpanderClick,
+    theme,
   };
 
   return (
     <div ref={taskListRef}>
-      <TaskListHeader {...headerProps} />
+      <TaskListHeader {...headerProps} theme={theme} />
       <div
         ref={horizontalContainerRef}
         className={horizontalContainerClass}
