@@ -463,7 +463,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
         tabIndex={0}
         ref={wrapperRef}
       >
-        {listCellWidth && <TaskList {...tableProps} theme={theme} />}
+        {listCellWidth && <TaskList {...tableProps} />}
         <TaskGantt
           gridProps={gridProps}
           calendarProps={calendarProps}
